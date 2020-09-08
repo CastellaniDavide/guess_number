@@ -14,9 +14,36 @@
  *
  */
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
-	// printf() displays the string inside quotation
-	printf("guess_number");
+	srand(time(NULL)); // Setup random
+
+	int correct = rand() % 1000;
+	int possibilities = 10;
+	int choosed = -1;
+
+	while (possibilities > 0 && correct != choosed)
+	{
+		printf("Insert a number: ");
+		scanf("%d", &choosed);
+		if (correct == choosed)
+		{
+			printf("Correct!\n");
+			return 0;
+		}
+		else
+		{
+			if(choosed > correct)
+				puts("Too hight\n");
+			else
+				puts("Too low\n");
+		}
+		possibilities--;
+	}
+
+	printf("The number was %d\n", correct);
+
 	return 0;
 }
